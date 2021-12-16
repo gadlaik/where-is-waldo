@@ -1,4 +1,5 @@
 .container {
+  position: relative;
   min-height: 100vh;
   width: 100%;
   background-color: whitesmoke;
@@ -18,7 +19,6 @@
   border-bottom: 1px solid rgba(128, 128, 128, 0.3);
   gap: 33px;
 }
-
 .home-header h1 {
   transform: translateY(10px);
 }
@@ -32,7 +32,6 @@
   grid-template-columns: repeat(auto-fill, minmax(33vw, 1fr));
   margin-top: 50px;
 }
-
 .level {
   display: flex;
   flex-direction: column;
@@ -41,13 +40,22 @@
   transition-duration: 300ms;
   padding: 20px;
 }
+.level a {
+  width: 90%;
+  padding: 0;
+  margin: 0;
+}
 .level:hover {
   transform: scale(0.99);
 }
 .level img {
-  width: 85%;
+  width: 100%;
   cursor: pointer;
   margin-bottom: 10px;
+}
+.level h2 {
+  color: rgb(255, 64, 30);
+  text-shadow: 0px 0px 2px gray;
 }
 
 /* Footer */
@@ -56,7 +64,8 @@ footer {
   text-align: center;
 }
 
-@media screen and (max-width: 720px) {
+/* Screen */
+@media screen and (max-width: 900px) {
   .levels {
     display: flex;
     flex-direction: column;
