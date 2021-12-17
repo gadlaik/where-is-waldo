@@ -10,15 +10,16 @@
 }
 
 .level-header {
-  position: fixed;
-  top: 0;
-  height: 100px;
+  background-color: whitesmoke;
   width: 100%;
-  background-color: gray;
+  gap: 10px;
 }
 
-.level-container img {
+.level-header img {
+  max-height: 67%;
+}
+
+.level-img {
   padding: 20px;
   max-width: 95%;
-  margin-top: 100px;
 }
