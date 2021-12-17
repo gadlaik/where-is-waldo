@@ -1,4 +1,4 @@
-import Popup from "../components/Popup";
+// import Popup from "../components/Popup";
 import whereWaldo2 from "../assets/whereWaldo2.jpg";
 import "../styles/Level.css";
 import waldo from "../assets/Waldo.png";
@@ -9,8 +9,8 @@ function Level2() {
     <div className="level-container">
       <div className="home-header level-header">
         <h1>Where's</h1>
-        <img src={waldo} alt="Waldo" />
-        <img src={wizzard} alt="Wizzard" />
+        <img src={waldo} alt="Waldo" className="waldo" />
+        <img src={wizzard} alt="Wizzard" className="wizzard" />
       </div>
       <img src={whereWaldo2} alt="whereWaldo2" className="level-img" />
     </div>
