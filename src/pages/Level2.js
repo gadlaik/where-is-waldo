@@ -3,6 +3,7 @@ import whereWaldo2 from "../assets/whereWaldo2.jpg";
 import "../styles/Level.css";
 import waldo from "../assets/Waldo.png";
 import wizzard from "../assets/Wizzard.png";
+import MatrixGrid from "../components/MatrixGrid";
 
 function Level2() {
   return (
@@ -12,6 +13,7 @@ function Level2() {
         <img src={waldo} alt="Waldo" className="waldo" />
         <img src={wizzard} alt="Wizzard" className="wizzard" />
       </div>
+      <MatrixGrid toFind={["waldo", "wizzard"]} />
       <img src={whereWaldo2} alt="whereWaldo2" className="level-img" />
     </div>
   );

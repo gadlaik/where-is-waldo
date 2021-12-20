@@ -1,6 +1,8 @@
 import { useEffect } from "react";
+let dropdown = document.createElement("div");
+dropdown.classList.add("dropdown");
 
-function MatrixGrid(e) {
+function MatrixGrid(props) {
   useEffect(() => {
     for (let i = 0; i < 330; i++) {
       let cube = document.createElement("div");
@@ -21,29 +23,21 @@ function MatrixGrid(e) {
         document.querySelector(".waldo").style.opacity = 0.3;
       else console.log(false);
 
-      console.log(e);
-      document.querySelector(".dropdown").style.top = `${e.clientY - 120}px`;
-      document.querySelector(".dropdown").style.left = `${e.clientX - 40}px`;
-      document.querySelector(".dropdown").style.display = "block";
+      e.target.appendChild(dropdown);
+      dropdown.style.display = "block";
+      dropdown.innerHTML = `${
+        props.toFind.includes("waldo") && "<div>Waldo</div>"
+      }`;
+
+      if (props.toFind.includes("wizzard"))
+        dropdown.innerHTML += "<div>Wizzard</div>";
+
+      if (props.toFind.includes("odlaw"))
+        dropdown.innerHTML += "<div>Odlaw</div>";
     }
   }
 
-  return (
-    <div className="matrix" onClick={foundWaldo}>
-      <div
-        className="dropdown"
-        style={{
-          position: "absolute",
-          height: 30,
-          width: 100,
-          backgroundColor: "yellow",
-          display: "none",
-        }}
-      >
-        <p>Waldo</p>
-      </div>
-    </div>
-  );
+  return <div className="matrix" onClick={foundWaldo}></div>;
 }
 
 export default MatrixGrid;

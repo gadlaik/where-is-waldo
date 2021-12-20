@@ -4,6 +4,7 @@ import "../styles/Level.css";
 import waldo from "../assets/Waldo.png";
 import odlaw from "../assets/Odlaw.png";
 import wizzard from "../assets/Wizzard.png";
+import MatrixGrid from "../components/MatrixGrid";
 
 function Level3() {
   return (
@@ -14,6 +15,7 @@ function Level3() {
         <img src={odlaw} alt="Odlaw" className="odlaw" />
         <img src={wizzard} alt="Wizzard" className="wizzard" />
       </div>
+      <MatrixGrid toFind={["waldo", "wizzard", "odlaw"]} />
       <img src={whereWaldo3} alt="whereWaldo3" className="level-img" />
     </div>
   );

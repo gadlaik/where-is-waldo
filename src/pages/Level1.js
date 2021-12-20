@@ -15,7 +15,9 @@ function Level1() {
           e.target.className !== "matrix" &&
           e.target.parentElement.className !== "matrix"
         )
-          document.querySelector(".dropdown").style.display = "none";
+          document
+            .querySelectorAll(".dropdown")
+            .forEach((dropdown) => (dropdown.style.display = "none"));
       }}
     >
       <div className="home-header level-header">
@@ -23,7 +25,7 @@ function Level1() {
         <img src={waldo} alt="Waldo Wave" className="waldo" />
       </div>
 
-      <MatrixGrid />
+      <MatrixGrid toFind={["waldo"]} />
       <img src={whereWaldo} alt="whereWaldo" className="level-img" />
     </div>
   );

@@ -39,3 +39,20 @@
   grid-template-columns: repeat(30, 1fr);
   z-index: 1000;
 }
+
+.dropdown {
+  background-color: greenyellow;
+  transform: translate(30px, 20px);
+  border-radius: 3px;
+}
+.dropdown div {
+  border: 1px solid black;
+  padding: 3px;
+  cursor: pointer;
+  transition-duration: 400ms;
+  border-radius: 3px;
+  font-weight: bolder;
+}
+.dropdown div:hover {
+  background-color: yellowgreen;
+}
