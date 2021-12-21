@@ -17,11 +17,10 @@ function MatrixGrid(props) {
       e.target.parentElement.className === "matrix"
     ) {
       if (
-        e.target.className === "fragment64" ||
-        e.target.className === "fragment65"
+        e.target.className === props.fragments.fragment1 ||
+        e.target.className === props.fragments.fragment2
       )
         document.querySelector(".waldo").style.opacity = 0.3;
-      else console.log(false);
 
       e.target.appendChild(dropdown);
       dropdown.style.display = "block";

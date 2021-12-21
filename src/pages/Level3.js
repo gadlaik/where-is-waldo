@@ -8,7 +8,18 @@ import MatrixGrid from "../components/MatrixGrid";
 
 function Level3() {
   return (
-    <div className="level-container">
+    <div
+      className="level-container"
+      onClick={(e) => {
+        if (
+          e.target.className !== "matrix" &&
+          e.target.parentElement.className !== "matrix"
+        )
+          document
+            .querySelectorAll(".dropdown")
+            .forEach((dropdown) => (dropdown.style.display = "none"));
+      }}
+    >
       <div className="home-header level-header">
         <h1>Where's</h1>
         <img src={waldo} alt="Waldo" className="waldo" />
