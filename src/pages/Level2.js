@@ -4,8 +4,21 @@ import "../styles/Level.css";
 import waldo from "../assets/Waldo.png";
 import wizzard from "../assets/Wizzard.png";
 import MatrixGrid from "../components/MatrixGrid";
+import db from "../firebase";
+import { useEffect, useState } from "react";
+import { onSnapshot, collection } from "firebase/firestore";
 
 function Level2() {
+  let [fragments, setFragments] = useState([]);
+
+  useEffect(
+    () =>
+      onSnapshot(collection(db, "whereWaldo"), (snapshot) =>
+        setFragments(snapshot.docs.map((doc) => doc.data()))
+      ),
+    []
+  );
+
   return (
     <div
       className="level-container"
@@ -24,7 +37,7 @@ function Level2() {
         <img src={waldo} alt="Waldo" className="waldo" />
         <img src={wizzard} alt="Wizzard" className="wizzard" />
       </div>
-      <MatrixGrid toFind={["waldo", "wizzard"]} />
+      <MatrixGrid toFind={["waldo", "wizzard"]} fragments={fragments[1]} />
       <img src={whereWaldo2} alt="whereWaldo2" className="level-img" />
     </div>
   );

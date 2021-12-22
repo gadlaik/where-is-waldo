@@ -20,12 +20,14 @@
 
 .level-img {
   padding: 20px;
-  max-width: 95%;
+  width: calc(95% - 40px);
+  max-width: 1024px;
   margin-top: auto;
   margin-bottom: auto;
 }
 
 .matrix {
+  padding: 15px 20px;
   position: absolute;
   width: calc(95% - 40px);
   aspect-ratio: 4 / 3;

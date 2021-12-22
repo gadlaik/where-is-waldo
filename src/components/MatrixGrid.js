@@ -9,6 +9,14 @@ function MatrixGrid(props) {
       cube.className = "fragment" + i;
       document.querySelector(".matrix").append(cube);
     }
+
+    let time = 0;
+
+    setInterval(() => {
+      time++;
+      if (!document.querySelector(".matrix")) time = 0;
+      console.log(time);
+    }, 1000);
   }, []);
 
   function foundWaldo(e) {
@@ -18,9 +26,18 @@ function MatrixGrid(props) {
     ) {
       if (
         e.target.className === props.fragments.fragment1 ||
-        e.target.className === props.fragments.fragment2
+        e.target.className === props.fragments.fragment2 ||
+        e.target.className === props.fragments.fragment3
       )
         document.querySelector(".waldo").style.opacity = 0.3;
+      else if (
+        e.target.className === props.fragments.fragment4 ||
+        e.target.className === props.fragments.fragment5 ||
+        e.target.className === props.fragments.fragment6
+      )
+        document.querySelector(".wizzard").style.opacity = 0.3;
+      else if (e.target.className === props.fragments.fragment7)
+        document.querySelector(".odlaw").style.opacity = 0.3;
 
       e.target.appendChild(dropdown);
       dropdown.style.display = "block";
