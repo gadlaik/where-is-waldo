@@ -12,22 +12,26 @@ function MatrixGrid(props) {
 
     let time = 0;
 
-    setInterval(() => {
-      time++;
-      if (!document.querySelector(".matrix")) time = 0;
-      console.log(time);
-    }, 1000);
+    // setInterval(() => {
+    //   time++;
+    //   if (!document.querySelector(".matrix")) time = 0;
+    //   console.log(time);
+    // }, 1000);
   }, []);
 
   function foundWaldo(e) {
     if (
-      e.target.className === "matrix" ||
-      e.target.parentElement.className === "matrix"
+      e.target.parentElement.className === "matrix" ||
+      e.target.parentElement.parentElement.className === "matrix" ||
+      e.target.parentElement.parentElement.parentElement.className === "matrix"
     ) {
       if (
-        e.target.className === props.fragments.fragment1 ||
-        e.target.className === props.fragments.fragment2 ||
-        e.target.className === props.fragments.fragment3
+        e.target.parentElement.parentElement.className ===
+          props.fragments.fragment1 ||
+        e.target.parentElement.parentElement.className ===
+          props.fragments.fragment2 ||
+        e.target.parentElement.parentElement.className ===
+          props.fragments.fragment3
       )
         document.querySelector(".waldo").style.opacity = 0.3;
       else if (
@@ -39,17 +43,19 @@ function MatrixGrid(props) {
       else if (e.target.className === props.fragments.fragment7)
         document.querySelector(".odlaw").style.opacity = 0.3;
 
-      e.target.appendChild(dropdown);
-      dropdown.style.display = "block";
-      dropdown.innerHTML = `${
-        props.toFind.includes("waldo") && "<div>Waldo</div>"
-      }`;
+      if (e.target.parentElement.className === "matrix") {
+        e.target.appendChild(dropdown);
+        dropdown.style.display = "block";
+        dropdown.innerHTML = `${
+          props.toFind.includes("waldo") && "<div>Waldo</div>"
+        }`;
 
-      if (props.toFind.includes("wizzard"))
-        dropdown.innerHTML += "<div>Wizzard</div>";
+        if (props.toFind.includes("wizzard"))
+          dropdown.innerHTML += "<div>Wizzard</div>";
 
-      if (props.toFind.includes("odlaw"))
-        dropdown.innerHTML += "<div>Odlaw</div>";
+        if (props.toFind.includes("odlaw"))
+          dropdown.innerHTML += "<div>Odlaw</div>";
+      }
     }
   }
 
