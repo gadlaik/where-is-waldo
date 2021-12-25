@@ -10,7 +10,7 @@ function MatrixGrid(props) {
       document.querySelector(".matrix").append(cube);
     }
 
-    let time = 0;
+    // let time = 0;
 
     // setInterval(() => {
     //   time++;
@@ -20,6 +20,19 @@ function MatrixGrid(props) {
   }, []);
 
   function foundWaldo(e) {
+    // dropdown
+    if (e.target.parentElement.className === "matrix") {
+      e.target.appendChild(dropdown);
+      dropdown.style.display = "block";
+
+      if (props.toFind.includes("waldo"))
+        dropdown.innerHTML = "<div>Waldo</div>";
+      if (props.toFind.includes("wizzard"))
+        dropdown.innerHTML += "<div>Wizzard</div>";
+      if (props.toFind.includes("odlaw"))
+        dropdown.innerHTML += "<div>Odlaw</div>";
+    }
+
     if (
       e.target.parentElement.className === "matrix" ||
       e.target.parentElement.parentElement.className === "matrix" ||
@@ -33,30 +46,27 @@ function MatrixGrid(props) {
         e.target.parentElement.parentElement.className ===
           props.fragments.fragment3
       )
-        document.querySelector(".waldo").style.opacity = 0.3;
-      else if (
-        e.target.className === props.fragments.fragment4 ||
-        e.target.className === props.fragments.fragment5 ||
-        e.target.className === props.fragments.fragment6
+        if (e.target.textContent === "Waldo")
+          document.querySelector(".waldo").style.opacity = 0.3;
+      if (
+        e.target.parentElement.parentElement.className ===
+          props.fragments.fragment4 ||
+        e.target.parentElement.parentElement.className ===
+          props.fragments.fragment5 ||
+        e.target.parentElement.parentElement.className ===
+          props.fragments.fragment6
       )
-        document.querySelector(".wizzard").style.opacity = 0.3;
-      else if (e.target.className === props.fragments.fragment7)
-        document.querySelector(".odlaw").style.opacity = 0.3;
-
-      if (e.target.parentElement.className === "matrix") {
-        e.target.appendChild(dropdown);
-        dropdown.style.display = "block";
-        dropdown.innerHTML = `${
-          props.toFind.includes("waldo") && "<div>Waldo</div>"
-        }`;
-
-        if (props.toFind.includes("wizzard"))
-          dropdown.innerHTML += "<div>Wizzard</div>";
-
-        if (props.toFind.includes("odlaw"))
-          dropdown.innerHTML += "<div>Odlaw</div>";
-      }
+        if (e.target.textContent === "Wizzard")
+          document.querySelector(".wizzard").style.opacity = 0.3;
+      if (
+        e.target.parentElement.parentElement.className ===
+        props.fragments.fragment7
+      )
+        if (e.target.textContent === "Odlaw")
+          document.querySelector(".odlaw").style.opacity = 0.3;
     }
+
+    console.log(e.target.textContent);
   }
 
   return <div className="matrix" onClick={foundWaldo}></div>;
