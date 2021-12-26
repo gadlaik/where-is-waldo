@@ -4,7 +4,7 @@ function Popup() {
   return (
     <div className="popup">
       <div className="popup-form">
-        <p>Your time: 69seconds</p>
+        <p>Your time: 69 seconds</p>
         <hr />
         <input
           type="text"

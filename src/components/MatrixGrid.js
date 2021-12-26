@@ -6,7 +6,6 @@ function MatrixGrid(props) {
   let isWaldoFound = props.toFind.includes("waldo") ? false : null;
   let isWizzardFound = props.toFind.includes("wizzard") ? false : null;
   let isOdlawFound = props.toFind.includes("odlaw") ? false : null;
-  let gameover;
 
   useEffect(() => {
     for (let i = 0; i < 330; i++) {
@@ -70,7 +69,7 @@ function MatrixGrid(props) {
 
       // game done check
       if (![isWaldoFound, isWizzardFound, isOdlawFound].includes(false))
-        gameover = true;
+        document.querySelector(".popup").style.display = "flex";
     }
   }
 

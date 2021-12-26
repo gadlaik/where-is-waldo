@@ -1,4 +1,4 @@
-// import Popup from "../components/Popup";
+import Popup from "../components/Popup";
 import whereWaldo2 from "../assets/whereWaldo2.jpg";
 import "../styles/Level.css";
 import waldo from "../assets/Waldo.png";
@@ -37,8 +37,10 @@ function Level2() {
         <img src={waldo} alt="Waldo" className="waldo" />
         <img src={wizzard} alt="Wizzard" className="wizzard" />
       </div>
+
       <MatrixGrid toFind={["waldo", "wizzard"]} fragments={fragments[1]} />
       <img src={whereWaldo2} alt="whereWaldo2" className="level-img" />
+      <Popup />
     </div>
   );
 }
