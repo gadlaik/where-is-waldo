@@ -3,20 +3,17 @@ let dropdown = document.createElement("div");
 dropdown.classList.add("dropdown");
 
 function MatrixGrid(props) {
+  let isWaldoFound = props.toFind.includes("waldo") ? false : null;
+  let isWizzardFound = props.toFind.includes("wizzard") ? false : null;
+  let isOdlawFound = props.toFind.includes("odlaw") ? false : null;
+  let gameover;
+
   useEffect(() => {
     for (let i = 0; i < 330; i++) {
       let cube = document.createElement("div");
       cube.className = "fragment" + i;
       document.querySelector(".matrix").append(cube);
     }
-
-    // let time = 0;
-
-    // setInterval(() => {
-    //   time++;
-    //   if (!document.querySelector(".matrix")) time = 0;
-    //   console.log(time);
-    // }, 1000);
   }, []);
 
   function foundWaldo(e) {
@@ -46,8 +43,10 @@ function MatrixGrid(props) {
         e.target.parentElement.parentElement.className ===
           props.fragments.fragment3
       )
-        if (e.target.textContent === "Waldo")
+        if (e.target.textContent === "Waldo") {
+          isWaldoFound = true;
           document.querySelector(".waldo").style.opacity = 0.3;
+        }
       if (
         e.target.parentElement.parentElement.className ===
           props.fragments.fragment4 ||
@@ -56,17 +55,23 @@ function MatrixGrid(props) {
         e.target.parentElement.parentElement.className ===
           props.fragments.fragment6
       )
-        if (e.target.textContent === "Wizzard")
+        if (e.target.textContent === "Wizzard") {
+          isWizzardFound = true;
           document.querySelector(".wizzard").style.opacity = 0.3;
+        }
       if (
         e.target.parentElement.parentElement.className ===
         props.fragments.fragment7
       )
-        if (e.target.textContent === "Odlaw")
+        if (e.target.textContent === "Odlaw") {
+          isOdlawFound = true;
           document.querySelector(".odlaw").style.opacity = 0.3;
-    }
+        }
 
-    console.log(e.target.textContent);
+      // game done check
+      if (![isWaldoFound, isWizzardFound, isOdlawFound].includes(false))
+        gameover = true;
+    }
   }
 
   return <div className="matrix" onClick={foundWaldo}></div>;
