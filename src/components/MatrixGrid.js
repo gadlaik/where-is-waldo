@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 let dropdown = document.createElement("div");
 dropdown.classList.add("dropdown");
+let gameover = false;
 
 function MatrixGrid(props) {
   let isWaldoFound = props.toFind.includes("waldo") ? false : null;
@@ -68,12 +69,14 @@ function MatrixGrid(props) {
         }
 
       // game done check
-      if (![isWaldoFound, isWizzardFound, isOdlawFound].includes(false))
-        document.querySelector(".popup").style.display = "flex";
+      gameover = ![isWaldoFound, isWizzardFound, isOdlawFound].includes(false);
+      if (gameover) document.querySelector(".popup").style.display = "flex";
+      console.log(gameover);
     }
   }
 
   return <div className="matrix" onClick={foundWaldo}></div>;
 }
 
+export { gameover };
 export default MatrixGrid;
