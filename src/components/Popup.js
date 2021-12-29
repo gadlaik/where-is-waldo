@@ -2,6 +2,9 @@ import { useState } from "react";
 import { useEffect } from "react/cjs/react.development";
 import "../styles/Popup.css";
 import { gameover } from "./MatrixGrid";
+import { doc, setDoc } from "firebase/firestore";
+import db from "../firebase";
+import { Link } from "react-router-dom";
 
 function Popup() {
   let [time, setTime] = useState(0);
@@ -11,8 +14,17 @@ function Popup() {
       setInterval(() => {
         !gameover && setTime(time++);
       }, 1000),
-    []
+    [time]
   );
+
+  const submitTime = async () => {
+    const docRef = doc(db, "highscore", "leaderboard");
+    const highscore = {
+      name: document.getElementById("username").value,
+      value: time,
+    };
+    await setDoc(docRef, highscore);
+  };
 
   return (
     <div className="popup">
@@ -25,7 +37,11 @@ function Popup() {
           placeholder="Username"
           autoComplete="off"
         />
-        <button type="submit">Submit</button>
+        <Link to="/">
+          <button type="submit" onClick={submitTime}>
+            Submit
+          </button>
+        </Link>
       </div>
     </div>
   );

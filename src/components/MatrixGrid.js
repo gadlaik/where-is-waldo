@@ -71,7 +71,6 @@ function MatrixGrid(props) {
       // game done check
       gameover = ![isWaldoFound, isWizzardFound, isOdlawFound].includes(false);
       if (gameover) document.querySelector(".popup").style.display = "flex";
-      console.log(gameover);
     }
   }
 
