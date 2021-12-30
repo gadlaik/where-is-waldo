@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react/cjs/react.development";
 import "../styles/Popup.css";
 import { gameover } from "./MatrixGrid";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, addDoc, collection } from "firebase/firestore";
 import db from "../firebase";
 import { Link } from "react-router-dom";
 
@@ -14,16 +14,18 @@ function Popup() {
       setInterval(() => {
         !gameover && setTime(time++);
       }, 1000),
-    [time]
+    []
   );
 
   const submitTime = async () => {
-    const docRef = doc(db, "highscore", "leaderboard");
+    // const docRef = doc(db, "highscore", "leaderboard");
     const highscore = {
       name: document.getElementById("username").value,
       value: time,
     };
-    await setDoc(docRef, highscore);
+    // await setDoc(docRef, highscore);
+    const collectionRef = collection(db, "highscore");
+    addDoc(collectionRef, highscore);
   };
 
   return (

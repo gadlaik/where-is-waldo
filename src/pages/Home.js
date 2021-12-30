@@ -4,8 +4,27 @@ import whereWaldo from "../assets/whereWaldoSM.jpg";
 import whereWaldo2 from "../assets/whereWaldo2SM.jpg";
 import whereWaldo3 from "../assets/whereWaldo3SM.jpg";
 import "../styles/Home.css";
+import { collection, onSnapshot } from "firebase/firestore";
+import db from "../firebase";
+import { useEffect, useState } from "react";
 
 function Home() {
+  let [leaderboard, setLeaderboard] = useState();
+
+  useEffect(
+    () =>
+      onSnapshot(collection(db, "highscore"), (snapshot) => {
+        setLeaderboard(
+          snapshot.docs
+            .map((doc) => doc.data())
+            .sort((a, b) => a.value - b.value)
+        );
+      }),
+    []
+  );
+
+  console.log(leaderboard);
+
   return (
     <div className="container">
       <header className="home-header">
