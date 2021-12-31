@@ -63,6 +63,24 @@ footer {
   margin-top: auto;
   text-align: center;
 }
+footer a {
+  text-decoration: none;
+}
+footer div {
+  background-color: orangered;
+  padding: 15px 30px;
+  width: fit-content;
+  margin: 20px auto 40px auto;
+  font-size: larger;
+  border-radius: 3px;
+  cursor: pointer;
+  color: whitesmoke;
+  font-weight: bolder;
+  transition-duration: 300ms;
+}
+footer div:hover {
+  background-color: tomato;
+}
 
 /* Screen */
 @media screen and (max-width: 900px) {

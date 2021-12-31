@@ -59,7 +59,12 @@ function Home() {
         </div>
       </main>
 
-      <footer>Property of Gadlajk</footer>
+      <footer>
+        <Link to="leaderboard">
+          <div>View Leaderboard</div>
+        </Link>
+        Property of Gadlajk
+      </footer>
     </div>
   );
 }
