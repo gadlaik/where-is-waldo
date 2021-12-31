@@ -1,0 +1,25 @@
+.leaderboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.leaderboard h1 {
+  margin-top: 50px;
+  margin-bottom: 80px;
+  font-weight: bolder;
+}
+
+.leaderboard li {
+  margin-bottom: 10px;
+  font-family: monospace;
+  font-size: 20px;
+  width: 125%;
+}
+
+.leaderboard span {
+  font-family: sans-serif;
+  font-weight: bold;
+  float: right;
+}
